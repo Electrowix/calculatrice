@@ -6,7 +6,7 @@
 html {background: gray;}
 h1 {color: black; text-shadow: 3px 2px darkred;}
 label {color: red;}
-input {color: blue; border-style: dashed; border-radius: 12px; padding: 10px;; border-color: blue;}
+input {color: blue; border-style: dashed; border-radius: 12px; padding: 10px; border-color: blue;}
 option{color: blue;}
 select{ border-color: red; border-radius: 12px; padding: 5px}
 button {color: darkgoldenrod; border-radius: 12px; padding: 5px; border-color: yellow; border-style:s;}
@@ -14,55 +14,54 @@ span{color: lightgreen; text-shadow: 5px 3px darkgreen;}
 table, th, td {border: 3px solid;border-collapse: collapse;border-color: black;}
 th{color: red; background: blue;}
 td{color: blue;background: lightgreen;}
+p{color: blue;}
 </style>
-
-
- <script>
-    function calculate() {
-    let peutEtreNombre1 = document.getElementById("nombre1").value
-    let peutEtreNombre2 = document.getElementById("nombre2").value
-    if (isNaN(peutEtreNombre1) || isNaN(peutEtreNombre2)) {
-      window.alert("Erreur 1: ceci n'est pas un nombre veuillez en choisir un.");
-      return;
-    }
-    let nombre1 = parseFloat(peutEtreNombre1)
-    let nombre2 = parseFloat(peutEtreNombre2)
-    let operateur = document.getElementById("operateur").value
-    let result
-    if (operateur === "+") {result=nombre1+nombre2}
-    if (operateur === "-") {result=nombre1-nombre2}
-    if (operateur === "*") {result=nombre1*nombre2}
-    if (operateur === "/") {result=nombre1/nombre2}
-    let tableau = document.getElementById("monHistorique")
-    let ligne = tableau.insertRow(+1)
-    ligne.innerHTML = "<td>" + nombre1 + "<td>" + operateur + "<td>" + nombre2 + "<td>" + "=" + "<td>" + result + "</td>"
-    document.getElementById("result").innerHTML = result}
-  </script>
+<script>
+function calculate() {
+let peutEtreNombre1 = document.getElementById("nombre1").value
+let peutEtreNombre2 = document.getElementById("nombre2").value
+if (isNaN(peutEtreNombre1) || isNaN(peutEtreNombre2)) {
+window.alert("Erreur 1: ceci n'est pas un nombre veuillez en choisir un.");
+return;}
+let nombre1 = parseFloat(peutEtreNombre1)
+let nombre2 = parseFloat(peutEtreNombre2)
+let operateur = document.getElementById("operateur").value
+let result
+if (operateur === "+") {result=nombre1+nombre2}
+if (operateur === "-") {result=nombre1-nombre2}
+if (operateur === "*") {result=nombre1*nombre2}
+if (operateur === "/") {result=nombre1/nombre2}
+let tableau = document.getElementById("monHistorique")
+let ligne = tableau.insertRow(+1)
+ligne.innerHTML = "<td>" + nombre1 + "<td>" + operateur + "<td>" + nombre2 + "<td>" + "=" + 
+"<td>" + result + "<td>" + new Date().
+toUTCString() + "</td>"
+document.getElementById("result").innerHTML = result}
+</script>
 </head>
-
-
-
 <body>
 <h1>Calculatrice</h1>
 <label for="nombre1">Nombre 1:</label>
-  <input type="text" id="nombre1" name="Nombre 1"><br><br>
-  <label for="nombre2">Nombre 2:</label>
-  <input type="text" id="nombre2" name="Nombre 2"><br><br>
-  <label for="cars">Opérateur:</label>
-  <select id="operateur">
-  <option value="+">+</option>
-  <option value="-">-</option>
-  <option value="*">*</option>
-  <option value="/" selected>/</option>
+<input type="text" id="nombre1" name="Nombre 1"><br><br>
+<label for="nombre2">Nombre 2:</label>
+<input type="text" id="nombre2" name="Nombre 2"><br><br>
+<label for="cars">Opérateur:</label>
+<select id="operateur">
+<option value="+">+</option>
+<option value="-">-</option>
+<option value="*">*</option>
+<option value="/" selected>/</option>
 </select><br><br>
-  <button type="button" onclick="calculate()">Calculer</button><br><br>
-  <span>Result:</span> <span id="result"></span><br><br>
-  <table id="monHistorique">
-  <th>Nombre 1 </th>
-  <th>Opérateur </th>
-  <th>Nombre 2 </th>
-  <th>Egal </th>
-  <th>Résultat </th>
+<button type="button" onclick="calculate()">Calculer</button><br><br>
+<span>Result:</span> <span id="result"></span><br><br>
+<p>Historique:</p>
+<table id="monHistorique">
+<th>Nombre 1 </th>
+<th>Opérateur </th>
+<th>Nombre 2 </th>
+<th>Egal </th>
+<th>Résultat </th>
+<th>Date</th>
 </table>
 </body>
 </html>
